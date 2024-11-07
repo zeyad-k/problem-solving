@@ -9,9 +9,13 @@ function maxProfit($prices) {
     $max_profit = 0;
 
     foreach ($prices as $price) {
-        $min_price = min($min_price, $price);
+        if ($price < $min_price) {
+            $min_price = $price;
+        }
         $profit = $price - $min_price;
-        $max_profit = max($max_profit, $profit);
+        if ($profit > $max_profit) {
+            $max_profit = $profit;
+        }
     }
 
     return $max_profit;
